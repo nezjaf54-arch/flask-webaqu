@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanjstore - Toko iPhone</title>
+  <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #ffffff, #1a1a1a);
+      color: #aeaeae;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: #000000;
+      box-shadow: 0 2px 10px rgb(255, 255, 255);
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 5px; color: #ffffff; }
+    header p { color: #aeaeae; margin: 0; }
+    .container { width: 90%; max-width: 1000px; margin: 40px auto; }
+    .product {
+      background: #242424;
+      border: 1px solid #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgb(255, 255, 255);
+    }
+    .product h2 { margin: 0; color: #ffffff; }
+    .product p { color: #ddd; }
+    .product button {
+      margin-top: 10px;
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .product button:hover { background-color: #3c3c3f93; }
+    #form {
+      background-color: #fff;
+      color: #000000;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: 40px auto;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    input, textarea, select {
+      width: 100%; padding: 10px; margin-top: 5px;
+      border-radius: 8px; border: 1px solid #ccc;
+      outline: none; transition: 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #000000;
+      box-shadow: 0 0 5px #000000;
+    }
+    button[type="submit"] {
+      margin-top: 15px;
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button[type="submit"]:hover { background-color: #353535; }
+    #successMessage {
+      background: #2c0cdd;
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+      font-weight: bold;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 0.9em;
+      border-top: 1px solid #222;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💎 Vanjstore</h1>
+    <p>Toko iPhone Original • Harga Terbaik •  Kualitas Bintang 5⭐ </p>
+    <p>📧 Email: <b>vanjstore@gmail.com</b></p>
+  </header>
+
+  <div class="container">
+    <div class="product">
+      <h2>iPhone 15 128 Ibox</h2>
+      <p>Harga: Rp 14.999.000</p>
+      <button type="button" onclick="openForm('iPhone 15', 14999000)">Beli Sekarang</button>
+    </div>
+    <div class="product">
+      <h2>iPhone 14 Pro 256 Ibox</h2>
+      <p>Harga: Rp 10.599.000</p>
+      <button type="button" onclick="openForm('iPhone 14 Pro', 10599000)">Beli Sekarang</button>
+    </div>
+    <div class="product">
+      <h2>iPhone 13 128 Inter</h2>
+      <p>Harga: Rp 7.499.000</p>
+      <button type="button" onclick="openForm('iPhone 13', 7499000)">Beli Sekarang</button>
+    </div>
+    <div class="product">
+      <h2>iPhone 11 Pro 64 Inter</h2>
+      <p>Harga: Rp 5.000.000</p>
+      <button type="button" onclick="openForm('iPhone 11 Pro', 5000000)">Beli Sekarang</button>
+    </div>
+    <div class="product">
+      <h2>iPhone  12 Pro 256 Ibox</h2>
+      <p>Harga: Rp 7.599.000</p>
+      <button type="button" onclick="openForm('iPhone  12 Pro', 7599000)">Beli Sekarang</button>
+    </div>
+  </div>
+
+  <div id="form">
+    <form id= "orderForm" onsubmit="return submitForm(event)">
+      <h2>Form Pemesanan</h2>
+
+      <label for="product">Produk 🛍️</label>
+      <input type="text" id="product" name="product" readonly>
+
+      <label for="price">Total Harga (Rp) 💶</label>
+      <input type="number" id="price" name="totalPrice" readonly>
+
+      <label for="fullName">Nama Lengkap 👤</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email 📧</label>
+      <input type="email" id="email" name="email" required>
+
+       <label for="password">Password 🔑</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="phone">Nomor Telepon 📞</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="address">Alamat Lengkap 🏠</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="paymentMethod">Metode Pembayaran 💳 </label>
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="">Pilih Metode</option>
+        <option value="Transfer Bank">Transfer Bank</option>
+        <option value="COD">COD</option>
+        <option value="E-Wallet">E-Wallet</option>
+      </select>
+
+      <button type="submit">Kirim Pesanan</button>
+    </form>
+
+    <div id="successMessage">🛒 Pesanan berhasil dikirim dan sudah masuk ke sistem!Happy shopping By:Vanjstore</div>
+  </div>
+
+  <footer>
+    © 2025 Vanjstore | Layanan Pembelian IPhone Resmi Berkualitas Terbaik Dan Garansi Pemakaian Selama 1 Minggu⚡
+  </footer>
+
+  <script>
+    function openForm(name, price) {
+      const form = document.getElementById("form");
+      form.style.display = "block";
+      document.getElementById("product").value = name;
+      document.getElementById("price").value = price;
+      document.getElementById("successMessage").style.display = "none";
+      window.scrollTo({ top: form.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const form = document.getElementById("orderForm");
+      const formData = new FormData(form);
+
+      fetch(window.location.origin + "/pesan", { method: "POST", body: formData })
+        .then(res => {
+          // langsung sukses tanpa alert gagal
+          document.getElementById("successMessage").style.display = "block";
+          form.reset();
+          setTimeout(() => {
+            document.getElementById("form").style.display = "none";
+            document.getElementById("successMessage").style.display = "none";
+          }, 3000);
+        })
+        .catch(err => console.error("Terjadi kesalahan:", err));
+
+      return false;
+    }
+  </script>
+</body>
+</html>
