@@ -1,111 +1,168 @@
 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vanjstore - Toko iPhone</title>
+  <title>💎 Vanjstore - Luxury iPhone Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(145deg, #ffffff, #1a1a1a);
-      color: #aeaeae;
-      margin: 0;
-      padding: 0;
+      background: radial-gradient(circle at top, #000000, #1a1a1a);
+      color: #e5e5e5;
+      overflow-x: hidden;
     }
+
     header {
       text-align: center;
-      padding: 30px 20px;
-      background: #000000;
-      box-shadow: 0 2px 10px rgb(255, 255, 255);
+      padding: 60px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    header h1 { font-size: 2.5em; margin-bottom: 5px; color: #ffffff; }
-    header p { color: #aeaeae; margin: 0; }
-    .container { width: 90%; max-width: 1000px; margin: 40px auto; }
+
+    header h1 {
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 0 0 20px #007bff;
+    }
+
+    header p { color: #bbb; margin-top: 8px; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_1_static__b9r6xk1k1k0y_large_2x.jpg') center/cover no-repeat;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    .hero h2 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
     .product {
-      background: #242424;
-      border: 1px solid #ffffff;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      transition: 0.4s ease;
     }
+
     .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgb(255, 255, 255);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     }
-    .product h2 { margin: 0; color: #ffffff; }
-    .product p { color: #ddd; }
+
+    .product h2 { color: #fff; margin-bottom: 10px; }
+    .product p { color: #ccc; font-size: 1.1em; }
+
     .product button {
-      margin-top: 10px;
-      background-color: #ffffff;
-      color: #000000;
-      font-weight: bold;
+      background: linear-gradient(90deg, #007bff, #00bcd4);
+      color: #fff;
       border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
-    .product button:hover { background-color: #3c3c3f93; }
-    #form {
-      background-color: #fff;
-      color: #000000;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 400px;
-      margin: 40px auto;
-      display: none;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      animation: fadeIn 0.5s ease-in-out;
+
+    .product button:hover {
+      background: linear-gradient(90deg, #00bcd4, #007bff);
+      transform: scale(1.05);
     }
+
+    #form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      color: #fff;
+      max-width: 450px;
+      margin: 50px auto;
+      display: none;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    label { font-weight: bold; margin-top: 10px; display: block; }
-    input, textarea, select {
-      width: 100%; padding: 10px; margin-top: 5px;
-      border-radius: 8px; border: 1px solid #ccc;
-      outline: none; transition: 0.2s;
-    }
-    input:focus, textarea:focus, select:focus {
-      border-color: #000000;
-      box-shadow: 0 0 5px #000000;
-    }
-    button[type="submit"] {
+
+    label {
+      font-weight: 600;
+      display: block;
       margin-top: 15px;
+    }
+
+    input, textarea, select {
       width: 100%;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
+      border: none;
+      margin-top: 8px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #007bff, #00bcd4);
+      color: #fff;
       font-weight: bold;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
     }
-    button[type="submit"]:hover { background-color: #353535; }
-    #successMessage {
-      background: #2c0cdd;
-      color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      text-align: center;
-      display: none;
-      font-weight: bold;
-      animation: fadeIn 0.4s ease-in-out;
+
+    button[type="submit"]:hover {
+      transform: scale(1.05);
     }
+
+    #successMessage {
+      display: none;
+      background: #00bcd4;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
-      color: #888;
+      padding: 25px;
+      color: #999;
       font-size: 0.9em;
-      border-top: 1px solid #222;
+      border-top: 1px solid rgba(255,255,255,0.1);
       margin-top: 40px;
+      background: rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
@@ -113,70 +170,65 @@
 
   <header>
     <h1>💎 Vanjstore</h1>
-    <p>Toko iPhone Original • Harga Terbaik •  Kualitas Bintang 5⭐ </p>
+    <p>Toko iPhone Original | Harga Terbaik | Kualitas Premium</p>
     <p>📧 Email: <b>vanjstore@gmail.com</b></p>
   </header>
 
+  <section class="hero">
+    <h2>Temukan iPhone Impianmu</h2>
+    <p>Desain modern, performa luar biasa, dan harga terbaik hanya di Vanjstore.</p>
+  </section>
+
   <div class="container">
     <div class="product">
-      <h2>iPhone 15 128 Ibox</h2>
-      <p>Harga: Rp 14.999.000</p>
-      <button type="button" onclick="openForm('iPhone 15', 14999000)">Beli Sekarang</button>
+      <h2>iPhone 15 128GB Ibox</h2>
+      <p>Rp 14.999.000</p>
+      <button onclick="openForm('iPhone 15', 14999000)">Beli Sekarang</button>
     </div>
     <div class="product">
-      <h2>iPhone 14 Pro 256 Ibox</h2>
-      <p>Harga: Rp 10.599.000</p>
-      <button type="button" onclick="openForm('iPhone 14 Pro', 10599000)">Beli Sekarang</button>
+      <h2>iPhone 14 Pro 256GB Ibox</h2>
+      <p>Rp 10.599.000</p>
+      <button onclick="openForm('iPhone 14 Pro', 10599000)">Beli Sekarang</button>
     </div>
     <div class="product">
-      <h2>iPhone 13 128 Inter</h2>
-      <p>Harga: Rp 7.499.000</p>
-      <button type="button" onclick="openForm('iPhone 13', 7499000)">Beli Sekarang</button>
+      <h2>iPhone 13 128GB Inter</h2>
+      <p>Rp 7.499.000</p>
+      <button onclick="openForm('iPhone 13', 7499000)">Beli Sekarang</button>
     </div>
     <div class="product">
-      <h2>iPhone 11 Pro 64 Inter</h2>
-      <p>Harga: Rp 5.000.000</p>
-      <button type="button" onclick="openForm('iPhone 11 Pro', 5000000)">Beli Sekarang</button>
-    </div>
-    <div class="product">
-      <h2>iPhone  12 Pro 256 Ibox</h2>
-      <p>Harga: Rp 7.599.000</p>
-      <button type="button" onclick="openForm('iPhone  12 Pro', 7599000)">Beli Sekarang</button>
-    </div>
-     <div class="product">
-      <h2>iPhone 17 Pro Max 1TB Inter</h2>
-      <p>Harga: Rp 27.499.000</p>
-      <button type="button" onclick="openForm('iPhone 17 Pro Max', 27499000)">Beli Sekarang</button>
+      <h2>iPhone 12 Pro 256GB Ibox</h2>
+      <p>Rp 7.599.000</p>
+      <button onclick="openForm('iPhone 12 Pro', 7599000)">Beli Sekarang</button>
     </div>
   </div>
 
   <div id="form">
-    <form id= "orderForm" onsubmit="return submitForm(event)">
-      <h2>Form Pemesanan</h2>
+    <form id="orderForm" onsubmit="return submitForm(event)">
+      <h2>🛍️ Form Pemesanan</h2>
 
-      <label for="product">Produk 🛍️</label>
+      <label>Produk</label>
       <input type="text" id="product" name="product" readonly>
 
-      <label for="price">Total Harga (Rp) 💶</label>
+      <label>Total Harga (Rp)</label>
       <input type="number" id="price" name="totalPrice" readonly>
 
-      <label for="fullName">Nama Lengkap 👤</label>
-      <input type="text" id="fullName" name="fullName" required>
+      <label>Nama Lengkap</label>
+      <input type="text" name="fullName" required>
 
-      <label for="email">Email 📧</label>
-      <input type="email" id="email" name="email" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
 
-       <label for="password">Password 🔑</label>
-      <input type="password" id="password" name="password" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
 
-      <label for="phone">Nomor Telepon 📞</label>
-      <input type="text" id="phone" name="phone" required>
+      <label>Nomor Telepon</label>
+      <input type="text" name="phone" required>
 
-      <label for="address">Alamat Lengkap 🏠</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
+      <label>Alamat Lengkap</label>
+      <textarea name="address" rows="3" required></textarea>
 
-      <label for="paymentMethod">Metode Pembayaran 💳 </label>
-      <select id="paymentMethod" name="paymentMethod" required>
+      <label>Metode Pembayaran</label>
+      <select name="paymentMethod" required>
         <option value="">Pilih Metode</option>
         <option value="Transfer Bank">Transfer Bank</option>
         <option value="COD">COD</option>
@@ -186,11 +238,11 @@
       <button type="submit">Kirim Pesanan</button>
     </form>
 
-    <div id="successMessage">🛒 Pesanan berhasil dikirim dan sudah masuk ke sistem!Happy shopping By:Vanjstore</div>
+    <div id="successMessage">✅ Pesanan berhasil dikirim! Terima kasih sudah belanja di Vanjstore 💎</div>
   </div>
 
   <footer>
-    © 2025 Vanjstore | Layanan Pembelian IPhone Resmi Berkualitas Terbaik Dan Garansi Pemakaian Selama 1 Minggu⚡
+    © 2025 Vanjstore | Luxury iPhone Store • Garansi Resmi & Layanan Premium
   </footer>
 
   <script>
@@ -208,21 +260,21 @@
       const form = document.getElementById("orderForm");
       const formData = new FormData(form);
 
-      fetch(window.location.origin + "/pesan", { method: "POST", body: formData })
-        .then(res => {
-          // langsung sukses tanpa alert gagal
-          document.getElementById("successMessage").style.display = "block";
-          form.reset();
-          setTimeout(() => {
-            document.getElementById("form").style.display = "none";
-            document.getElementById("successMessage").style.display = "none";
-          }, 3000);
-        })
-        .catch(err => console.error("Terjadi kesalahan:", err));
-
-      return false;
+      fetch(window.location.origin + "/pesan", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(() => {
+        document.getElementById("successMessage").style.display = "block";
+        form.reset();
+        setTimeout(() => {
+          document.getElementById("form").style.display = "none";
+          document.getElementById("successMessage").style.display = "none";
+        }, 3500);
+      })
+      .catch(err => console.error("Error:", err));
     }
   </script>
 </body>
 </html>
-
