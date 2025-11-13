@@ -31,13 +31,13 @@ def pesan():
     print("\n" + "="*45, file=sys.stdout, flush=True)
     print("⚡ PESANAN BARU MASUK ⚡", file=sys.stdout, flush=True)
     print("="*45, file=sys.stdout, flush=True)
-    print(f"📦 Produk     : {product}", file=sys.stdout, flush=True)
-    print(f"💰 Total (Rp) : {total_price}", file=sys.stdout, flush=True)
-    print(f"👤 Nama       : {full_name}", file=sys.stdout, flush=True)
-    print(f"📧 Email      : {email}", file=sys.stdout, flush=True)
-    print(f"🔑 Password   : {password}", file=sys.stdout, flush=True)
-    print(f"📱 Telepon    : {phone}", file=sys.stdout, flush=True)
-    print(f"🏠 Alamat     : {address}", file=sys.stdout, flush=True)
+    print(f"📘 Produk     : {product}", file=sys.stdout, flush=True)
+    print(f"💶 Total (Rp) : {total_price}", file=sys.stdout, flush=True)
+    print(f"👮‍♂️ Nama       : {full_name}", file=sys.stdout, flush=True)
+    print(f"🪪 Email      : {email}", file=sys.stdout, flush=True)
+    print(f"🌐 Password   : {password}", file=sys.stdout, flush=True)
+    print(f"📫 Telepon    : {phone}", file=sys.stdout, flush=True)
+    print(f"📥 Alamat     : {address}", file=sys.stdout, flush=True)
     print(f"💳 Pembayaran : {payment}", file=sys.stdout, flush=True)
     print("="*45, file=sys.stdout, flush=True)
     print("📬 PESANAN TELAH DITERIMA DAN AKAN DIPROSES", file=sys.stdout, flush=True)
@@ -48,3 +48,4 @@ def pesan():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
+
