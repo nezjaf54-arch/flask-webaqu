@@ -5,205 +5,312 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💎 Vanjstore - Luxury iPhone Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>💎 Vanjstore - Luxury Iphone Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #000000, #1a1a1a);
-      color: #e5e5e5;
-      overflow-x: hidden;
+    body{
+      font-family:'Poppins',sans-serif;
+      background:radial-gradient(circle at top,#000,#111);
+      color:#e5e5e5;    
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    /* NAVBAR */
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:18px 40px;
+      backdrop-filter:blur(25px);
+      background:rgba(255,255,255,0.05);
+      display:flex;
+      justify-content:center;
+      gap:35px;
+      border-bottom:1px solid rgba(52, 51, 51, 0.069);
+      z-index:999;
+    }
+    nav a{
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      padding:10px 18px;
+      border-radius:12px;
+      transition:0.3s;
+    }
+    nav a:hover{
+      background:rgba(255,255,255,0.15);
+      box-shadow:0 0 15px cyan;
+    } 
+
+    /* HERO */
+    header{
+      text-align:center;
+      padding:140px 20px 70px;
+    }
+    header h1{
+      font-size:3.8em;
+      color:#fff;
+      text-shadow:0 0 25px #00bcd4;
+      animation:glow 3s infinite alternate;
+    }
+    @keyframes glow{
+      from{ text-shadow:0 0 10px #00bcd4;}
+      to{ text-shadow:0 0 30px #00eaff;}
     }
 
-    header h1 {
-      font-size: 3em;
-      color: #fff;
-      text-shadow: 0 0 20px #007bff;
+    .hero{
+      padding:120px 20px;
+      background:url('https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_1_static__b9r6xk1k1k0y_large_2x.jpg') center/cover no-repeat;
+      text-align:center;
+      color:white;
+      box-shadow:inset 0 0 150px black;
+    }
+    .hero h2{
+      font-size:2.8em;
+      text-shadow:0 0 20px black;
+      backdrop-filter:blur(3px);
     }
 
-    header p { color: #bbb; margin-top: 8px; }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: url('https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_1_static__b9r6xk1k1k0y_large_2x.jpg') center/cover no-repeat;
-      color: #fff;
-      text-shadow: 0 0 15px rgba(0,0,0,0.6);
+    /* PRODUK */
+    .container{
+      width:90%;
+      max-width:1250px;
+      margin:70px auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
     }
 
-    .hero h2 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+    .product{
+      background:rgba(255,255,255,0.07);
+      padding:25px;
+      border-radius:20px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.15);
+      transition:0.4s;
+      transform-style:preserve-3d;
+    }
+    .product:hover{
+      transform:translateY(-12px) scale(1.03);
+      box-shadow:0 0 25px rgba(0,255,255,0.4);
     }
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 60px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+    .product button{
+      margin-top:15px;
+      padding:12px 20px;
+      border:none;
+      color:white;
+      width:100%;
+      font-weight:bold;
+      border-radius:12px;
+      background:linear-gradient(90deg,#007bff,#00eaff);
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 0 15px #00eaff;
+    }
+    .product button:hover{
+      transform:scale(1.07);
+      box-shadow:0 0 25px cyan;
     }
 
-    .product {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      transition: 0.4s ease;
+    /* FORM */
+    #form{
+      width:90%;
+      max-width:470px;
+      margin:80px auto;
+      padding:30px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.09);
+      backdrop-filter:blur(15px);
+      display:none;
+      border:1px solid rgba(255,255,255,0.2);
+      animation:fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(25px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
-    .product:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    input,textarea,select{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background:white;
+      margin-top:8px;
+      color:black;
     }
 
-    .product h2 { color: #fff; margin-bottom: 10px; }
-    .product p { color: #ccc; font-size: 1.1em; }
-
-    .product button {
-      background: linear-gradient(90deg, #007bff, #00bcd4);
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      margin-top: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+    button[type="submit"]{
+      margin-top:20px;
+      padding:14px;
+      background:linear-gradient(90deg,#007bff,#00eaff);
+      border-radius:10px;
+      color:white;
+      font-weight:bold;
+      border:none;
+      cursor:pointer;
+      box-shadow:0 0 15px cyan;
+      transition:0.3s;
+    }
+    button[type="submit"]:hover{
+      transform:scale(1.05);
     }
 
-    .product button:hover {
-      background: linear-gradient(90deg, #00bcd4, #007bff);
-      transform: scale(1.05);
+    #successMessage{
+      margin-top:20px;
+      display:none;
+      background:#00eaff;
+      color:#000;
+      padding:15px;
+      border-radius:10px;
+      text-align:center;
+      font-weight:bold;
     }
 
-    #form {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 30px;
-      color: #fff;
-      max-width: 450px;
-      margin: 50px auto;
-      display: none;
-      animation: fadeIn 0.6s ease-in-out;
+    /* TESTIMONIAL */
+    .testi{
+      margin:100px auto;
+      width:90%;
+      max-width:1200px;
+      text-align:center;
+    }
+    .testi h2{
+      margin-bottom:30px;
+      font-size:2.2em;
+      text-shadow:0 0 20px cyan;
+    }
+    .testi-box{
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .testi-item{
+      width:280px;
+      padding:20px;
+      background:rgba(255,255,255,0.08);
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.2);
+      backdrop-filter:blur(10px);
+      transition:0.3s;
+    }
+    .testi-item:hover{
+      transform:translateY(-12px);
+      box-shadow:0 0 20px cyan;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* FAQ */
+    .faq{
+      margin:100px auto 0;
+      width:90%;
+      max-width:900px;
+    }
+    .faq-item{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.2);
+      margin-bottom:15px;
+      padding:15px;
+      border-radius:12px;
+      cursor:pointer;
+    }
+    .faq-item p{
+      display:none;
+      margin-top:10px;
+      opacity:0.9;
+    }
+    .faq-item:hover{
+      box-shadow:0 0 15px cyan;
     }
 
-    label {
-      font-weight: 600;
-      display: block;
-      margin-top: 15px;
+    /* FOOTER */
+    footer{
+      margin-top:80px;
+      padding:25px;
+      text-align:center;
+      color:#aaa;
     }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      margin-top: 8px;
-      background: rgba(255,255,255,0.854);
-      color: #000000;
-      outline: none;
+    /* FLOATING WA */
+    .wa-float{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      background:#25D366;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:30px;
+      box-shadow:0 0 20px #25D366;
+      z-index:999;
+      text-decoration:none;
+      transition:0.3s;
     }
-
-    button[type="submit"] {
-      width: 100%;
-      margin-top: 20px;
-      background: linear-gradient(90deg, #007bff, #00bcd4);
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      padding: 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button[type="submit"]:hover {
-      transform: scale(1.05);
-    }
-
-    #successMessage {
-      display: none;
-      background: #00bcd4;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #999;
-      font-size: 0.9em;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
-      background: rgba(255, 255, 255, 0.05);
+    .wa-float:hover{
+      transform:scale(1.1);
     }
   </style>
 </head>
+
 <body>
 
-  <header>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#produk">Produk</a>
+    <a href="#testi&FAQ">Testi&FAQ</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home">
     <h1>💎 Vanjstore</h1>
-    <p>Toko iPhone Original | Harga Terbaik | Kualitas Premium</p>
+      <p>Toko Iphone Original | Harga Terjangkau | Kualitas Premium</p>
     </header>
 
   <section class="hero">
-    <h2>Temukan iPhone Impianmu</h2>
-    <p>Desain modern, performa luar biasa, dan harga terbaik hanya di Vanjstore.</p>
+    <h2>Iphone Impianmu Menunggu Di Sini</h2>
+    <p>Kualitas terbaik — Pelayanan premium — Harga pelajar.</p>
   </section>
 
-  <div class="container">
+  <!-- PRODUK -->
+  <div class="container" id="produk">
+
     <div class="product">
       <h2>iPhone 15 128GB Ibox</h2>
-      <p>Rp 14.999.000</p>
-      <button onclick="openForm('iPhone 15', 14999000)">Beli Sekarang</button>
+      <p>Rp 10.999.000</p>
+      <button onclick="openForm('iPhone 15', 10999000)">Beli Sekarang</button>
     </div>
+
     <div class="product">
       <h2>iPhone 14 Pro 256GB Ibox</h2>
       <p>Rp 10.599.000</p>
       <button onclick="openForm('iPhone 14 Pro', 10599000)">Beli Sekarang</button>
     </div>
+
     <div class="product">
-      <h2>iPhone 13 128GB Inter</h2>
-      <p>Rp 7.499.000</p>
-      <button onclick="openForm('iPhone 13', 7499000)">Beli Sekarang</button>
+      <h2>iPhone 13 128GB Ibox</h2>
+      <p>Rp  8.199.000</p>
+      <button onclick="openForm('iPhone 13', 8199000)">Beli Sekarang</button>
     </div>
+
     <div class="product">
-      <h2>iPhone 12 Pro 256GB Ibox</h2>
-      <p>Rp 7.599.000</p>
-      <button onclick="openForm('iPhone 12 Pro', 7599000)">Beli Sekarang</button>
+      <h2>iPhone 12 Pro 128GB Ibox</h2>
+      <p>Rp 7.200.000</p>
+      <button onclick="openForm('iPhone 12 Pro', 7200000)">Beli Sekarang</button>
     </div>
+
   </div>
 
+  <!-- FORM -->
   <div id="form">
     <form id="orderForm" onsubmit="return submitForm(event)">
-      <h2>🛍️ Form Pemesanan</h2>
+      <h2>🛍️ Form Pemesanan</h2> 
 
       <label>📘 Produk</label>
       <input type="text" id="product" name="product" readonly>
@@ -220,7 +327,7 @@
       <label>🌐 Password</label>
       <input type="password" name="password" required>
 
-      <label>📫 Nomor Telepon</label>
+      <label>📫 No Telepon</label>
       <input type="text" name="phone" required>
 
       <label>📥 Alamat Lengkap</label>
@@ -237,49 +344,98 @@
       <button type="submit">Kirim Pesanan</button>
     </form>
 
-    <div id="successMessage">✅ Pesanan berhasil dikirim! Terima kasih sudah belanja di Vanjstore 💎</div>
+    <div id="successMessage">🛒 Pesanan berhasil dikirim! Terima kasih telah belanja di Vanjstore ➡️</div>
   </div>
 
+  <!-- TESTIMONIAL -->
+  <div class="testi" id="testi">
+    <h2>✨ Testimonial Pelanggan ✨</h2>
+
+    <div class="testi-box">
+      <div class="testi-item">
+        <p>“Pengiriman cepat banget! iPhone mulus, harga murah, pelayanan top.”</p>
+        <b>- Rian</b>
+      </div>
+      <div class="testi-item">
+        <p>“Admin ramah & fast respon. Produk original. Sangat rekomendasi!”</p>
+        <b>- Sarah</b>
+      </div>
+      <div class="testi-item">
+        <p>“Sudah repeat order 2x. Puas terus! Kualitas tidak mengecewakan.”</p>
+        <b>- Andi</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq" id="faq">
+    <h2 style="text-align:center;margin-bottom:20px;text-shadow:0 0 20px cyan;">❓ Pertanyaan yang Sering Ditanyakan</h2>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <h3>📦 Apakah barang dijamin original?</h3>
+      <p>Ya, semua produk yang kami jual 100% original & bergaransi resmi ibox.</p>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <h3>🚚 Pengiriman dari mana?</h3>
+      <p>Pengiriman dari Jakarta — packing aman & cepat.</p>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <h3>💳 Apakah bisa COD?</h3>
+      <p>Ya, tersedia COD untuk area tertentu, ke lok lebih baik.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" style="text-align:center;margin:100px auto;">
+    <h2>📞 Hubungi Kami</h2>
+    <p>Chat CS Vanjstore untuk bantuan:</p>
+    <br>
+    <a href="https://wa.me/+628095322265809" target="_blank" style="color:cyan;font-size:1.4em;font-weight:700;">💬 WhatsApp Admin</a>
+  </section>
+
   <footer>
-    © 2025 Vanjstore | Luxury iPhone Store • Garansi Resmi & Layanan Premium
+    © 2025 Vanjstore | Luxury Iphone Store
   </footer>
 
+  <!-- FLOATING WA -->
+  <a href="https://wa.me/+628095322265809" class="wa-float">💬</a>
+
   <script>
-    function openForm(name, price) {
-      const form = document.getElementById("form");
-      form.style.display = "block";
+    function openForm(name, price){
+      document.getElementById("form").style.display = "block";
       document.getElementById("product").value = name;
       document.getElementById("price").value = price;
-      document.getElementById("successMessage").style.display = "none";
-      window.scrollTo({ top: form.offsetTop - 20, behavior: 'smooth' });
+      window.scrollTo({top:document.getElementById("form").offsetTop - 20,behavior:'smooth'});
     }
 
-    function submitForm(e) {
+    function submitForm(e){
       e.preventDefault();
       const form = document.getElementById("orderForm");
       const formData = new FormData(form);
 
       fetch(window.location.origin + "/pesan", {
-        method: "POST",
-        body: formData
+        method:"POST",
+        body:formData
       })
-      .then(res => res.text())
       .then(() => {
-        document.getElementById("successMessage").style.display = "block";
         form.reset();
+        document.getElementById("successMessage").style.display = "block";
         setTimeout(() => {
-          document.getElementById("form").style.display = "none";
           document.getElementById("successMessage").style.display = "none";
-        }, 3500);
-      })
-      .catch(err => console.error("Error:", err));
+        },3000);
+      });
+    }
+
+    function toggleFAQ(box){
+      const p = box.querySelector("p");
+      p.style.display = p.style.display === "block" ? "none" : "block";
     }
   </script>
+
 </body>
 </html>
-
-
-
 
 
 
